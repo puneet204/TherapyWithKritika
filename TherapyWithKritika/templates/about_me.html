@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Me</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  /*
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to top, #bfdbdf, #c4e0e5);
+}*/
+
+/* Section */
+.about-section {
+  max-width: 1300px;
+  margin: 80px auto;
+  padding: 40px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+/* Show animation */
+.about-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Heading */
+.about-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Paragraph */
+.about-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Highlight words */
+.highlight {
+  color: #4ca1af;
+  font-weight: 600;
+}
+
+/* Hover effect */
+.about-section:hover {
+  transform: scale(1.01);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="about-section" id="about">
+
+  <h2>About Me</h2>
+
+  <p>
+    Hi, I’m <span class="highlight">Kritika Zutshi</span>, a clinical psychologist based in India, 
+    offering online therapy for individuals seeking <span class="highlight">clarity</span>, 
+    <span class="highlight">healing</span>, and <span class="highlight">growth</span>.
+  </p>
+
+  <p>
+    I believe therapy is not about <span class="highlight">fixing you</span>, but about 
+    <span class="highlight">understanding you</span> — your experiences, your emotions, 
+    and the unique story that has shaped who you are.
+  </p>
+
+  <p>
+    My work focuses on helping you explore your <span class="highlight">inner world</span>, 
+    make sense of your thoughts and feelings, and build a more 
+    <span class="highlight">grounded</span>, compassionate relationship with yourself.
+  </p>
+
+  <p>
+    I aim to create a space that feels <span class="highlight">safe</span>, 
+    <span class="highlight">supportive</span>, and <span class="highlight">non-judgmental</span> — 
+    where you can show up as you are and have real, meaningful conversations.
+  </p>
+
+</div>
+
+<script>
+// Scroll animation
+const about = document.getElementById("about");
+
+window.addEventListener("scroll", () => {
+  const top = about.getBoundingClientRect().top;
+
+  if (top < window.innerHeight - 100) {
+    about.classList.add("show");
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block style %}
+ <style>
+/* Home Button */
+.top-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  background: white;
+  color: #4ca1af;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.top-btn:hover {
+  background: #4ca1af;
+  color: white;
+}
+</style>
+ {% endblock %}
+{% block content %}
+<div class="container my-3">
+        <h3>Client Details</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">email</th>
+                    <th scope="col">name</th>
+                    <th scope="col">age</th>
+                    <th scope="col">occupation</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">alt_phone</th>
+                    <th scope="col">resident</th>
+                    <th scope="col">insurance</th>
+                    <th scope="col">concern</th>
+                    <th scope="col">goal</th>
+                    <th scope="col">past</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in clients %}
+                    <tr>
+                        <th scope="row">{{loop.index}}</th>
+                        <td>{{data.email}}</th>
+                        <td>{{data.name}}</th>
+                        <td>{{data.age}}</th>
+                        <td>{{data.occupation}}</th>
+                        <td>{{data.phone}}</th>
+                        <td>{{data.alt_phone}}</th>
+                        <td>{{data.resident}}</th>
+                        <td>{{data.insurance}}</th>
+                        <td>{{data.concern}}</th>
+                        <td>{{data.goal}}</th>
+                        <td>{{data.past}}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="/" class="top-btn">Home</a>
+
+{% endblock %}
+
+{% block content1 %}
+<a href="{{ ('login') }}" button type="submit" class="btn btn-primary">Logout</a></button>
+{% endblock %}

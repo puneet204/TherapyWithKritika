@@ -1,0 +1,293 @@
+{% extends "base.html" %} {% block company %}Therapy With Kritika{% endblock %}
+{% block title %}Therapy With Kritika{% endblock %}
+{% block style %}
+<style>
+
+ body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+
+    background: linear-gradient(to bottom, #dbeafe, #f0f9ff);
+    color: #1f2933;
+}
+/*body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+
+    background: #eaf4fb;
+    color: #2a343e;
+
+    transition: background 0.6s ease;
+}*/
+    header {
+      background: #131415;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #357ABD;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    
+    .hero {
+    background: url('static/6331.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;   /* fits full image */
+    background-position: center;
+    background-color: #a5f3fc;     /* fills empty space */
+
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgb(42, 52, 62);
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.parent {
+    position: relative;
+}
+
+.quote {
+    position: absolute;
+    bottom: 50px;         
+    left: 0;
+    width: 100%;       
+
+    padding: 25px 40px;
+    border-radius: 0;   
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+
+    font-size: 1.2rem;
+
+    color: rgb(55, 66, 71);
+    text-align: center;
+}
+
+.about_me {
+        background-image: url("static/kritika.jpeg");
+        background-size: 30px 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 10vh;
+        }
+    
+    .container {
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      color: #357ABD;
+      margin-bottom: 15px;
+    }
+    .contact-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      background: #357ABD;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background: #285A8C;
+    }
+    footer {
+      background: #4a90e2;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    .moving-text {
+        position: absolute;
+        white-space: nowrap;
+        font-size: 20px;
+        color: #4ca1af;
+        animation: moveText 15s linear infinite;
+        }
+        .moving-text:hover {
+            animation-play-state: paused;
+            }
+
+        /* Animation */
+    @keyframes moveText {
+    from {
+        right: -100%;
+    }
+    to {
+        right: 100%;
+    }
+    }
+
+#display {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: auto;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 0; }
+    25%, 75% { opacity: 1; }
+}
+
+  </style>
+{% endblock %}
+
+{% block content %}
+
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">    
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ ('fee') }}">Fees</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Book Session</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ ('individual_booking') }}">Individual Session</a></li>
+                    <li><a class="dropdown-item disabled" href="#" aria-disabled="true">Couple session</a></li>
+                    <li><a class="dropdown-item disabled" href="#" aria-disabled="true">Individual session (Students)</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="testimonials">Client Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="user_data">Client Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="{{ ('sign_up') }}">Sign-Up</a>
+                </li>
+                </li>
+            </ul>
+{% endblock %}
+
+{% block content1 %}
+<!--div class="hero">
+</div-->
+<br><br>
+
+<div class="hero">
+    <div class="quote">
+        <div id="display">
+</div>
+
+    <script>
+const items = {{ items | tojson }};
+let itemIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+const speed = 20;       // typing speed
+const eraseSpeed = 10;  // deleting speed
+const delayBetween = 2000; // wait before deleting
+
+function typeEffect() {
+    const el = document.getElementById("display");
+    const currentText = items[itemIndex];
+
+    if (!isDeleting) {
+        // Typing
+        el.innerHTML = "<i>" + currentText.substring(0, charIndex++) + "</i>";
+        
+        if (charIndex > currentText.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, delayBetween);
+            return;
+        }
+    } else {
+        // Deleting
+        el.innerHTML = "<i>" + currentText.substring(0, charIndex--) + "</i>";
+        
+        if (charIndex < 0) {
+            isDeleting = false;
+            itemIndex = (itemIndex + 1) % items.length;
+        }
+    }
+
+    setTimeout(typeEffect, isDeleting ? eraseSpeed : speed);
+}
+
+typeEffect();
+</script>
+
+<script>
+window.addEventListener("scroll", function () {
+    const scrollY = window.scrollY;
+
+    if (scrollY < 200) {
+        document.body.style.background = "#a5f3fc"; // light blue
+    } 
+    else if (scrollY < 500) {
+        document.body.style.background = "#a5f3fc"; // lighter
+    } 
+    else if (scrollY < 900) {
+        document.body.style.background = "#fbcfe8"; // soft green tint
+    } 
+    else {
+        document.body.style.background = "#e9d5ff"; // clean white
+    }
+});
+</script>
+
+<!--
+$blue:    #0d6efd;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #d63384;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    #0dcaf0;
+-->
+
+    </div>
+</div>
+
+{% endblock %}
+
+
