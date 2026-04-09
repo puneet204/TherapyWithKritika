@@ -1,258 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Testimonials</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to top, #4ca1af, #c4e0e5);
-  padding: 60px 30px;
-}
-.top-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 18px;
-  background: white;
-  color: #4ca1af;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 500;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
-
-.top-btn:hover {
-  background: #4ca1af;
-  color: white;
-}
-/* Heading */
-h2 {
-  text-align: center;
-  color: white;
-  margin-bottom: 40px;
-  font-weight: 600;
-}
-
-/* Grid */
-.testimonial-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* Card */
-.testimonial-card {
-  padding: 25px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-  transition: 0.4s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  min-height: 140px;
-}
-
-/* Hover */
-.testimonial-card:hover {
-  transform: translateY(-10px) scale(1.03);
-}
-
-/* Preview */
-.preview {
-  font-size: 15px;
-  font-weight: 500;
-  color: #333;
-}
-
-/* Full text */
-.full-text {
-  position: absolute;
-  inset: 0;
-  padding: 25px;
-  background: linear-gradient(to top, white, #f9f9f9);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.4s ease;
-  font-size: 14px;
-  line-height: 1.6;
-  overflow-y: auto;
-}
-
-/* Show full */
-.testimonial-card:hover .full-text {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hide preview */
-.testimonial-card:hover .preview {
-  opacity: 0;
-}
-
-/* Quote */
-.quote {
-  font-size: 30px;
-  color: #4ca1af;
-}
-
-/* Footer (author style) */
-.author {
-  margin-top: 15px;
-  font-size: 12px;
-  color: #666;
-  font-weight: 500;
-}
-
-/* Optional scrollbar */
-.full-text::-webkit-scrollbar {
-  width: 4px;
-}
-.full-text::-webkit-scrollbar-thumb {
-  background: #4ca1af;
-  border-radius: 10px;
-}
-</style>
-
-</head>
-
-<body>
-
-<h2>What Clients Say</h2>
-
-<div class="testimonial-container">
-
-  <!-- Card 1 -->
-  <div class="testimonial-card">
-    <div class="preview">
-      <span class="quote">“</span><br>
-      I highly recommend Kritika Ma’am...
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="testimonials-section" style="padding: 6rem;">
+    <p class="section-label">Client Words</p>
+    <h2 class="section-heading">What clients say</h2>
+    <p class="section-body" style="margin-bottom: 0;">Names and identifying details have been changed. Shared with permission.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">I came to Dr. Hayes after years of white-knuckling it through anxiety. She helped me understand why I was stuck — and gave me real tools that actually changed my daily life. I felt heard without being managed.</p>
+        <div class="testimonial-author">M.T.</div>
+        <div class="testimonial-role">Client for 2 years, anxiety &amp; perfectionism</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">The EMDR work we did was transformative. I was skeptical — it sounds strange — but the results were real. Memories that used to hijack my day simply… quieted. I'm grateful I took the chance.</p>
+        <div class="testimonial-author">R.K.</div>
+        <div class="testimonial-role">Client for 14 months, complex trauma</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">After my divorce I didn't know who I was anymore. Dr. Hayes helped me grieve properly — not rush past it — and eventually find language for what I actually wanted. Best investment I've ever made.</p>
+        <div class="testimonial-author">A.L.</div>
+        <div class="testimonial-role">Client for 18 months, life transitions</div>
+      </div>
     </div>
+  </section>
 
-    <div class="full-text">
-      <span class="quote">“</span><br>
-      I highly recommend Kritika Ma’am. She is incredibly professional, kind, patient, and insightful. 
-      Her passion for her work shines through in every session. The time I’ve spent with her has been 
-      exceptionally productive, and I’ve gained valuable insights and support. I’m deeply grateful for 
-      her guidance and would recommend her without hesitation.
-      <div class="author">— D</div>
+  <!-- FAQ -->
+  <section class="faq-section" style="padding: 6rem;">
+    <div class="faq-inner">
+      <div>
+        <p class="section-label">FAQ</p>
+        <h2 class="section-heading">Common questions</h2>
+        <p class="section-body">If something's not covered here, please reach out — there's no such thing as a wrong question.</p>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you accept insurance?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">I am an out-of-network provider. I can provide a superbill each month that you submit to your insurance for potential partial reimbursement. Many clients with PPO plans receive 40–70% reimbursement. I also offer a sliding fee scale for clients who need it.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            How long will therapy take?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">It depends entirely on what you're working on and how you respond. Some focused issues — like a specific phobia or adjustment disorder — may resolve in 8–12 sessions. More complex trauma or long-standing patterns typically take longer. We set realistic goals together and review them regularly.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What is your cancellation policy?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">I ask for 48 hours notice to cancel or reschedule a session without charge. Late cancellations or no-shows are charged the full session fee. I understand that life happens — exceptions are made for genuine emergencies.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Is telehealth as effective as in-person?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">The research says yes, for most people and most concerns. Some clients actually find it easier to open up from their own space. Telehealth is available to Oregon residents through a secure, HIPAA-compliant platform.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What are your session fees?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Individual sessions are $210 for 50 minutes. The initial intake assessment is $240. A sliding scale starting at $140 is available for qualifying clients — please mention this when you reach out and we'll discuss it privately.</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="testimonial-card">
-    <div class="preview">
-      <span class="quote">“</span><br>
-      She is immensely dedicated towards her work...
-    </div>
-
-    <div class="full-text">
-      <span class="quote">“</span><br>
-      I have been taking therapy sessions from Kritika Ma’am for a few months. 
-      She has provided great help in understanding the root cause of my issues and how to tackle them. 
-      I have seen tremendous improvement and now understand myself better. 
-      She is immensely dedicated towards her work. 
-      I highly recommend anyone having mental issues to seek her guidance.
-      <div class="author">— S</div>
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="testimonial-card">
-    <div class="preview">
-      <span class="quote">“</span><br>
-      She helps me understand situations and deal with them...
-    </div>
-
-    <div class="full-text">
-      <span class="quote">“</span><br>
-      I have been taking therapy sessions with Kritika Ma’am for the past few months. 
-      She helps me understand situations causing distress and how to deal with them. 
-      I feel mentally stronger and more confident now. 
-      I highly recommend her sessions to anyone facing mental health challenges.
-      <div class="author">— D</div>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="testimonial-card">
-    <div class="preview">
-      <span class="quote">“</span><br>
-      I want to express my gratitude to Kritika Mam for being a crucial support...
-    </div>
-
-    <div class="full-text">
-      <span class="quote">“</span><br>
-      ”I want to express my gratitude to Kritika Mam for being a crucial support during a challenging time in my life. As a first time therapy participant, I needed someone to help me navigate personal and professional relationship difficulties and provide objective insights. Her expertise and tailored approach have been invaluable. Thank you for your support when I needed it the most. I highly recommend.”
-            <div class="author">— O</div>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="testimonial-card">
-    <div class="preview">
-      <span class="quote">“</span><br>
-        It has helped me to get a wise perspective of ...
-    </div>
-
-    <div class="full-text">
-      <span class="quote">“</span><br>
-        ”I’ve been taking counseling sessions from Dr Kritika since 1.5 years and 
-        it has helped me to get a wise perspective of things happening in my life and environment. 
-        It has help me to understand more about myself and ways to lead a wise mind life”
-      <div class="author">— S</div>
-    </div>
-  </div>
-
-  <!-- Card 6 -->
-  <div class="testimonial-card">
-    <div class="preview">
-      <span class="quote">“</span><br>
-      For me personally she made the goal of therapy...
-    </div>
-
-    <div class="full-text">
-      <span class="quote">“</span><br>
-        ”Kritika Zutshi is extremely professional and I have been a patient since April 2023. 
-        For me personally she made the goal of therapy to ultimately be self sufficiency and she provides you with the necessary tools and guidance for the same, 
-        so as to not constantly be dependent on medications or psychotherapy. 
-        I practised DBT with her and it was immensely responsible in changing my outlook and behaviour to the circumstances around me. 
-        As someone who had been trying therapy since the age of 15, it extremely gratifying to find a therapist who I was finally able to work with long term and get the help I needed. 
-        I have personally recommended acquaintances of mine and would recommend her as an excellent therapist to anyone who needs help.”
-    <div class="author">— R</div>
-    </div>
-  </div>
-
-  <!-- Card 7 -->
-  <div class="testimonial-card">
-    <div class="preview">
-      <span class="quote">“</span><br>
-        After changing multiple therapists, finally found someone who I could be comfortable opening up...
-    </div>
-
-    <div class="full-text">
-      <span class="quote">“</span><br>
-      ”I’ve been taking sessions with Kritika since a year now. 
-      After changing multiple therapists, finally found someone who I could be comfortable opening up with because 
-      she’s non judgmental and has helped me identify my past trauma and the root causes behind my issues 
-      and helped me heal. She’s friendly but also very professional and dedicated to her work at the same time. 
-      Will recommend her to anyone going through a hard time or in general, anyone wanting to grow, heal and take care of your 
-      mental health.”
-    <div class="author">— L</div>
-    </div>
-  </div>
-
-</div>
-<a href="/" class="top-btn">Home</a>
-
-</body>
-</html>
+  </section>

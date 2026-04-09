@@ -1,12 +1,15 @@
 from flask import Blueprint, render_template, request, flash, session
-from .model_db import Client, New_User
-from . import db
+from .model_db import Client
+from . import db, mail, Message
+from config import Config
+from datetime import datetime
+
 
 home_page = Blueprint('home', __name__)
 
 @home_page.route('/', methods=['GET', 'POST'],)
 def home():
-    data = ['''For him who has conquered the mind, the mind is the best of friends;
+    """data = ['''For him who has conquered the mind, the mind is the best of friends;
 but for one who has failed to do so, the mind will remain the greatest enemy. \n - Bhagavad Gita (Chapter 6, Verse 6)''',
             'A person is made by their belief. As they believe, so they become. \n - Bhagavad Gita (Chapter 17, Verse 3)',
             'One who has controlled the mind and senses finds peace.\n - Bhagavad Gita (Chapter 17)',
@@ -21,73 +24,100 @@ but for one who has failed to do so, the mind will remain the greatest enemy. \n
             'The best years of your life are the ones in which you decide your problems are your own. - Albert Ellis',
             'The act of revealing oneself fully to another and still being accepted may be the major vehicle of therapeutic help. - Irvin Yalom'
             ]
-    return render_template("home.html", items=data)
+    #return render_template("home.html", items=data)"""
+    return render_template("home.html")
 
 @home_page.route('/fee')
 def fee():
     return render_template('fee.html')
 
+#def get_html():
+ 
+#    return render_template("email.html")
+
+def send_email(name, last, email, phone, country):
+    msg = Message(
+        subject="New Client Submission",
+        sender=Config.MAIL_USERNAME,
+        recipients=[email]
+    )
+
+    msg.html = render_template(
+    "email.html",
+    firstName=name,
+    lastName=last,
+    email=email,
+    phone=phone,
+    country=country
+)
+    mail.send(msg)
+    return "Email sent successfully!"
+
 @home_page.route('/testimonials')
 def testimonials():
     return render_template('testimonials.html')
 
-@home_page.route('/sign_up', methods=['GET', 'POST'])
-def sign_up():
+@home_page.route('/booking', methods=['GET', 'POST'])
+def booking():
     if request.method == 'POST':
-        data1 = New_User(
-            email = request.form['email'],
-            name = request.form['name'],
-            uname = request.form['uname'],
-            password1 = request.form['password1'],
-            password2 = request.form['password2']
-        )
-
-        if data1.password1 == data1.password2:
-            db.session.add(data1)
-            db.session.commit()
-
-            return render_template('user_login.html')        
-    
-    return render_template('sign_up.html')
-
-@home_page.route('/signin', methods=['GET', 'POST'])
-def signin():
-    if request.method == 'POST':
-        return render_template('login.html')
-
-@home_page.route('/individual_booking', methods=['GET', 'POST'],)
-def individual_booking():
-    if request.method == 'POST':
-        data = Client(
-            email = request.form['email'],
-            name = request.form['name'],
-            age = request.form['age'],
-            occupation = request.form['occupation'],
-            phone = request.form['phone'],
-            alt_phone = request.form['alt_phone'],
-            resident = request.form['resident'],
-            insurance = request.form['insurance'],
-            concern = request.form['concern'],
-            goal = request.form['goal'],
-            past = request.form['past']
-        )
+        email = request.form['email'].strip(),
+        firstName = request.form['firstName'].strip(),
+        lastName = request.form['lastName'].strip(),
+        phone = request.form['phone'].strip(),
+        resident = request.form['resident']
+        if resident == "No":
+            country = request.form['country']
+            data = Client(
+                email = request.form['email'],
+                firstName = request.form['firstName'],
+                lastName = request.form['lastName'],
+                age = request.form['age'],
+                occupation = request.form['occupation'],
+                phone = request.form['phone'],
+                alt_phone = request.form['alt_phone'],
+                resident = request.form['resident'],
+                country = request.form['country'],
+                insurance = request.form['insurance'],
+                reason = request.form['reason'],
+                message = request.form['message'],
+                created_at = datetime.now()
+            )
+        else:
+            country = "India"
+            data = Client(
+                email = request.form['email'],
+                firstName = request.form['firstName'],
+                lastName = request.form['lastName'],
+                age = request.form['age'],
+                occupation = request.form['occupation'],
+                phone = request.form['phone'],
+                alt_phone = request.form['alt_phone'],
+                resident = request.form['resident'],
+                country = "India",
+                insurance = request.form['insurance'],
+                reason = request.form['reason'],
+                message = request.form['message'],
+                created_at = datetime.now()
+            )
 
         db.session.add(data)
         db.session.commit()
-
+        
+        #clients = Client.query.all()
+        #return render_template('user_data.html', clients=clients)
+        send_email(firstName[0], lastName[0], email[0], phone[0], country)
         return render_template('submit_ack.html')
+        
+    return render_template('booking.html')
 
-    return render_template("individual_booking.html")
-
-@home_page.route('/user_data', methods=['GET', 'POST'])
-def user_data():
-    if request.method == 'POST':
-        username = request.form.get('uname')
-        password = request.form.get('password')
-
-        if username == "Mini" and password == "Mini_12345":
+@home_page.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if request.method == "POST":
+        username = request.form['uname']
+        password = request.form['password']
+        if username == "mini" and password == "mini_123":
             clients = Client.query.all()
             return render_template('user_data.html', clients=clients)
-        else:
-            return render_template('login.html')
-    return render_template('login.html')
+    return render_template('admin.html')
+
+

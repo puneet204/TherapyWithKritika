@@ -1,222 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Areas of Support</title>
 
-<style>
-/*body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f7f9fc;
-}
-
-/* Section Styling */
-.footer {
-    background: #2a343e;
-    color: #fff;
-    padding: 40px 20px 20px;
-    margin-top: 50px;
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-.footer h3, .footer h4 {
-    margin-bottom: 15px;
-}
-
-.footer p {
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links li {
-    margin-bottom: 8px;
-}
-
-.footer-links a {
-    color: #ccc;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.footer-links a:hover {
-    color: #fff;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 15px;
-    font-size: 0.85rem;
-    color: #aaa;
-}
-section {
-    padding: 70px 20px;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 2.7rem;
-    margin-bottom: 50px;
-    color: #2a343e;
-}
-
-/* Grid Layout */
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-/* Card Styling */
-.card {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    padding: 25px;
-    border-radius: 15px;
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    transition: all 0.4s ease;
-
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(40px);
-}
-
-/* Card Text */
-.card h3 {
-    margin-bottom: 12px;
-    color: #2a343e;
-}
-
-.card p {
-    color: #555;
-    font-size: 0.95rem;
-}
-
-/* Hover Effect */
-.card:hover {
-    transform: translateY(-12px) scale(1.04);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.15);
-}
-
-/* Reveal Animation */
-.card.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-</style>
-</head>
-
-<body>
-
-<section>
-    <h2>Areas of Support</h2>
-
-    <div class="services">
-
-        <div class="card">
-            <h3>🧠 Anxiety & Stress</h3>
-            <p>Overthinking & chronic worry</p>
-        </div>
-
-        <div class="card">
-            <h3>🌧️ Depression</h3>
-            <p>Low mood & motivation</p>
-        </div>
-
-        <div class="card">
-            <h3>💬 Relationships</h3>
-            <p>Conflict & communication</p>
-        </div>
-
-        <div class="card">
-            <h3>⚡ Panic</h3>
-            <p>Panic attacks & fear</p>
-        </div>
-
-        <div class="card">
-            <h3>🔄 Patterns</h3>
-            <p>Recurring emotional cycles</p>
-        </div>
-
-        <div class="card">
-            <h3>🌱 Life Changes</h3>
-            <p>Major transitions</p>
-        </div>
-
+<!-- SERVICES -->
+  <section id="services">
+    <div class="services-intro">
+      <div>
+        <p class="section-label">Services</p>
+        <h2 class="section-heading">How I can help you</h2>
+      </div>
+      <p class="section-body">
+        Every person arrives with a different story. I offer a focused range of evidence-based services designed to address the issues most common in adult mental health — approached with curiosity rather than formula.
+      </p>
     </div>
-</section>
-
-<script>
-const cards = document.querySelectorAll('.card');
-
-function revealCards() {
-    const triggerBottom = window.innerHeight * 0.85;
-
-    cards.forEach((card, index) => {
-        const cardTop = card.getBoundingClientRect().top;
-
-        if (cardTop < triggerBottom) {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 100); // stagger effect
-        }
-    });
-}
-
-window.addEventListener('scroll', revealCards);
-window.addEventListener('load', revealCards);
-</script>
-
-
-    <footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-about">
-            <h3>Kritika Zutshi</h3>
-            <p>Online therapy focused on clarity, healing, and personal growth.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+        <div class="service-title">Individual Therapy</div>
+        <p class="service-desc">Weekly one-on-one sessions exploring the roots of your patterns and building new ways of responding. Sessions are 50 minutes.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
         </div>
-
-        <div class="footer-contact">
-            <h4>Contact</h4>
-            <p>Email: info@example.com</p>
-            <p>Phone: +91-XXXXXXXXXX</p>
+        <div class="service-title">Anxiety &amp; Depression</div>
+        <p class="service-desc">Targeted CBT and ACT-based work to interrupt anxious cycles, reduce avoidance, and rebuild a life that feels livable again.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
         </div>
-
+        <div class="service-title">Trauma &amp; PTSD</div>
+        <p class="service-desc">EMDR and trauma-focused therapy to process difficult experiences at your own pace, reducing their power over your present life.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="service-title">Life Transitions</div>
+        <p class="service-desc">Support through divorce, career change, loss, relocation, retirement, or any passage that has left you uncertain of who you are now.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="service-title">Grief &amp; Loss</div>
+        <p class="service-desc">A space to mourn what has been lost — a person, a relationship, a version of yourself — without timeline or expectation.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="service-title">Telehealth Sessions</div>
+        <p class="service-desc">Secure video sessions for clients who prefer to meet from home, or who live outside the Portland metro area. Oregon residents only.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-        <p>© 2026 Kritika Zutshi. All rights reserved.</p>
+ <!-- APPROACH -->
+  <section id="approach" class="approach-section">
+    <div class="approach-grid">
+      <div>
+        <p class="section-label">My Approach</p>
+        <h2 class="section-heading">Therapy that fits your life, not a protocol</h2>
+        <p class="section-body">
+          I don't believe in one-size-fits-all treatment. Every session begins with listening, and every plan is built together. You bring the expertise on yourself — I bring the clinical knowledge and the structure that makes change possible.
+        </p>
+      </div>
+      <div class="approach-steps">
+        <div class="approach-step">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-title">Free 20-minute consultation</div>
+            <p class="step-text">We meet briefly — no charge, no commitment — to see if working together makes sense. You can ask anything.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-title">Comprehensive intake assessment</div>
+            <p class="step-text">A thorough first session to understand your history, your goals, and what has and hasn't worked before.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-title">Tailored treatment plan</div>
+            <p class="step-text">We build a plan together — drawing on CBT, EMDR, ACT, or other methods based on what fits your needs and preferences.</p>
+          </div>
+        </div>
+        <div class="approach-step">
+          <div class="step-num">04</div>
+          <div>
+            <div class="step-title">Ongoing work &amp; review</div>
+            <p class="step-text">Regular check-ins on progress. The plan adapts as you do. Sessions are weekly or bi-weekly depending on your goals.</p>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
-</body>
-</html>
+  </section>
