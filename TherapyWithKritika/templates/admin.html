@@ -3,6 +3,11 @@
 admin
 {% endblock %}
 {% block content %}
+<nav id="nav">
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/" class="nav-cta">HOME</a></li>
+    </ul>
+</nav>
 <form method="POST">
     <h3 align="center">User Name</h3>
     <div class="form-group">
@@ -16,8 +21,6 @@ admin
 
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
-
-    <a href="/" class="top-btn">Home</a>
 
 {% endblock %}
 

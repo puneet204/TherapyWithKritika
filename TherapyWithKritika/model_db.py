@@ -14,6 +14,7 @@ class Client(db.Model):
     country = db.Column(db.String(45))
     insurance = db.Column(db.String(5))
     reason = db.Column(db.String(150))
+    past = db.Column(db.String(150))
     message = db.Column(db.String(150))
     created_at = db.Column(db.DateTime, default=datetime.now())
     #relation = db.relationship('New_User', backref='author', lazy=True)

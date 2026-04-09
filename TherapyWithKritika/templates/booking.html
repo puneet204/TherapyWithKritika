@@ -4,7 +4,9 @@
  <!-- CONTACT -->
   <form method="POST">
   <section id="contact">
-    <a href="/" class="top-btn">Home</a>
+    <div class="hero-actions">
+        <a href="/" class="btn-primary">HOME</a>
+    </div>
       <div class="contact-form">
         <form id="contactForm">
           <div class="form-row">
@@ -35,7 +37,7 @@
               <input type="number" id="phone" name="phone" placeholder="+91-XXXXXXXXXX" required />
             </div>
             <div class="form-group">
-              <label for="alt_phone">Alternate phone Number</label>
+              <label for="alt_phone">Emergency Contact</label>
               <input type="number" id="alt_phone" name="alt_phone" placeholder="+91-XXXXXXXXXX" required />
             </div>
           <!--/div-->
@@ -92,6 +94,21 @@
               <option>Something else</option>
             </select>
           </div>
+          <!--div class="form-group">
+              <label for="alt_phone">Emergency Contact</label>
+              <input type="number" id="alt_phone" name="alt_phone" placeholder="+91-XXXXXXXXXX" required />
+          </div>
+
+          <div class="form-group">
+              <label for="alt_phone">Emergency Contact</label>
+              <input type="number" id="alt_phone" name="alt_phone" placeholder="+91-XXXXXXXXXX" required />
+          </div-->
+
+          <div class="form-group">
+              <label for="past">Please share any past relevant psychiatric treatment or therapy, if any.</label>
+              <input type="text" id="past" name="past" placeholder="" />
+          </div>
+
           <div class="form-group">
             <label for="message">Anything else you'd like to share (optional)</label>
             <textarea id="message" name="message" placeholder="Share as much or as little as feels right…"></textarea>

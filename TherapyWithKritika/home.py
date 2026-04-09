@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, session
 from .model_db import Client
 from . import db, mail, Message
-from config import Config
+from config import ConfigDetails
 from datetime import datetime
 
 
@@ -38,7 +38,7 @@ def fee():
 def send_email(name, last, email, phone, country):
     msg = Message(
         subject="New Client Submission",
-        sender=Config.MAIL_USERNAME,
+        sender=ConfigDetails.MAIL_USERNAME,
         recipients=[email]
     )
 
@@ -79,6 +79,7 @@ def booking():
                 country = request.form['country'],
                 insurance = request.form['insurance'],
                 reason = request.form['reason'],
+                past = request.form['past'],
                 message = request.form['message'],
                 created_at = datetime.now()
             )
@@ -96,6 +97,7 @@ def booking():
                 country = "India",
                 insurance = request.form['insurance'],
                 reason = request.form['reason'],
+                past = request.form['past'],
                 message = request.form['message'],
                 created_at = datetime.now()
             )
