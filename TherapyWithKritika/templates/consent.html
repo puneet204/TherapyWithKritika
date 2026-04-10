@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consent Form</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f8fb;
+    margin: 0;
+    padding: 20px;
+    color: #2a343e;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #3b82f6;
+}
+
+h3 {
+    margin-top: 25px;
+    color: #1f2937;
+}
+
+p {
+    line-height: 1.6;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+.notice {
+    background: #e0f2fe;
+    padding: 10px;
+    border-left: 4px solid #3b82f6;
+    margin-bottom: 20px;
+}
+
+.checkbox {
+    margin-top: 30px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2563eb;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Consent Form</h1>
+
+<div class="notice">
+Please read the below mentioned information carefully and reach out via phone or email if you have any queries.
+</div>
+
+<p>
+I understand that therapy involves professional services to assist with personal, emotional, psychological, and/or relationship concerns.
+</p>
+
+<h3>Goals of Therapy</h3>
+<ul>
+    <li>Understanding and managing emotions</li>
+    <li>Improving communication skills</li>
+    <li>Resolving conflicts</li>
+    <li>Developing coping strategies</li>
+    <li>Enhancing personal growth and self-awareness</li>
+    <li>Therapy is not intended for seeking advice</li>
+</ul>
+
+<h3>Confidentiality</h3>
+<p>
+All information shared during therapy is confidential except where required by law.
+</p>
+<ul>
+    <li>Risk of harm to self or others</li>
+    <li>Suspected abuse or neglect</li>
+    <li>Court order or subpoena</li>
+    <li>Professional consultation within ethical guidelines</li>
+</ul>
+
+<h3>Benefits and Risks</h3>
+<p>
+Therapy may improve relationships, confidence, and coping skills. However, it may also involve discussing difficult emotions.
+</p>
+
+<h3>Scheduling and Communication</h3>
+<p>
+Clients are expected to attend scheduled sessions and inform in advance for cancellations or rescheduling. Communication outside sessions is limited to emergencies.
+</p>
+
+<h3>Cancellation Policy</h3>
+<ul>
+    <li>Confirm appointments at least 24 hours in advance</li>
+    <li>Provide 24-hour notice for cancellation/rescheduling</li>
+    <li>Late cancellations may incur a fee</li>
+    <li>No-shows will be charged the full session fee</li>
+    <li>Exceptions may apply for emergencies</li>
+    <li>Frequent cancellations may require pre-payment</li>
+    <li>Outstanding fees must be cleared before next session</li>
+</ul>
+
+<h3>Fees and Payment</h3>
+<p>
+Clients agree to follow the fee structure and make timely payments.
+</p>
+
+<h3>Termination of Therapy</h3>
+<p>
+Therapy is voluntary. Either party may terminate based on professional or ethical considerations.
+</p>
+
+<h3>Acknowledgment and Consent</h3>
+<p>
+Go back to the booking page and confirm that you have read and understood this consent form and agree to the terms.
+</p>
+
+
+<button onclick="history.back()">← Go Back</button>
+</div>
+
+<script>
+function submitConsent() {
+    const consent = document.getElementById("consent");
+
+    if (!consent.checked) {
+        alert("Please accept the consent before proceeding.");
+    } else {
+        alert("Consent submitted successfully!");
+        // You can redirect or submit form here
+    }
+}
+</script>
+
+</body>
+</html>

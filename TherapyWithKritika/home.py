@@ -122,4 +122,8 @@ def admin():
             return render_template('user_data.html', clients=clients)
     return render_template('admin.html')
 
+@home_page.route('/consent', methods=['GET', 'POST'])
+def consent():
+    return render_template('consent.html')
+
 

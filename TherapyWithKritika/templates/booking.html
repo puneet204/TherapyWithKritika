@@ -9,6 +9,7 @@
     </div>
       <div class="contact-form">
         <form id="contactForm">
+          <h2><center>Registration and Onboarding</center></h2>
           <div class="form-row">
             <div class="form-group">
               <label for="email">Email</label>
@@ -113,7 +114,36 @@
             <label for="message">Anything else you'd like to share (optional)</label>
             <textarea id="message" name="message" placeholder="Share as much or as little as feels right…"></textarea>
           </div>
-          <button type="submit" class="form-submit">Request Consultation</button>
+          <!--a href="{{ ('consent') }}">Terms and condition</a-->
+
+<div>
+    <input type="checkbox" id="agree" required onchange="toggleButton()">
+    <label for="agree">
+        I agree to the 
+        <a href="{{ ('consent') }}">
+            Terms and Conditions
+        </a>
+    </label>
+</div>
+
+<br>
+
+<button type="submit" id="registerBtn" class="form-submit" disabled>
+    Register yourself
+</button>
+
+<script>
+function toggleButton() {
+    const checkbox = document.getElementById("agree");
+    const button = document.getElementById("registerBtn");
+
+    button.disabled = !checkbox.checked;
+}
+</script>
+
+
+
+          <!--button type="submit" class="form-submit">Register yourself</button-->
           <p class="form-note">This form is confidential. I respond within one business day.</p>
         </form>
         <div class="form-success" id="formSuccess">
