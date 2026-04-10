@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, session
-from .model_db import Client
+from .model_db import Client, Users
 from . import db, mail, Message
 from config import ConfigDetails
 from datetime import datetime
@@ -60,10 +60,10 @@ def testimonials():
 @home_page.route('/booking', methods=['GET', 'POST'])
 def booking():
     if request.method == 'POST':
-        email = request.form['email'].strip(),
-        firstName = request.form['firstName'].strip(),
-        lastName = request.form['lastName'].strip(),
-        phone = request.form['phone'].strip(),
+        firstName = request.form['firstName']
+        lastName = request.form['lastName']
+        email = request.form['email']
+        phone = request.form['phone']
         resident = request.form['resident']
         if resident == "No":
             country = request.form['country']
@@ -105,12 +105,30 @@ def booking():
         db.session.add(data)
         db.session.commit()
         
-        #clients = Client.query.all()
+        add_user()
+        
         #return render_template('user_data.html', clients=clients)
-        send_email(firstName[0], lastName[0], email[0], phone[0], country)
+        send_email(firstName, lastName, email, phone, country)
         return render_template('submit_ack.html')
         
     return render_template('booking.html')
+
+def add_user():
+    clients = Client.query.all()
+    for c in clients:
+        exist = Users.query.filter_by(email=c.email).first()
+        if not exist:
+            user = Users(
+                email=c.email,
+                firstName=c.firstName,
+                lastName=c.lastName,
+                phone=c.phone,
+                created_at=c.created_at
+                )
+            db.session.add(user)
+
+        db.session.commit()
+
 
 @home_page.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -119,7 +137,8 @@ def admin():
         password = request.form['password']
         if username == "mini" and password == "mini_123":
             clients = Client.query.all()
-            return render_template('user_data.html', clients=clients)
+            users = Users.query.all()
+        return render_template('user_data.html', clients=clients, users=users)
     return render_template('admin.html')
 
 @home_page.route('/consent', methods=['GET', 'POST'])

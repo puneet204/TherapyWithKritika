@@ -35,13 +35,11 @@ td:nth-child(12) {
 {% block content %}
 <div class="hero-actions">
         <a href="/" class="btn-primary">HOME</a>
-    </div>
+</div>
 <div class="container my-4">
     <h3 class="mb-3">Client Details</h3>
-
     <div class="table-responsive custom-table">
-        <table class="table table-hover align-middle text-center">
-            
+        <table class="table table-hover align-middle text-center">            
             <thead>
                 <tr>
                     <th>ID</th>
@@ -75,6 +73,38 @@ td:nth-child(12) {
                     <td class="text-wrap">{{ data.reason }}</td>
                     <td class="text-wrap">{{ data.past }}</td>
                     <td class="text-start text-wrap">{{ data.message }}</td>
+                    <td>
+                        {{ data.created_at.strftime('%d-%m-%Y %H:%M') if data.created_at }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="container my-4">
+    <h3 class="mb-3">Users Details</h3>
+    <div class="table-responsive custom-table">
+        <table class="table table-hover align-middle text-center">            
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for data in users %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td class="text-break">{{ data.email }}</td>
+                    <td>{{ data.firstName }} {{ data.lastName }}</td>
+                    <td>{{ data.phone }}</td>
                     <td>
                         {{ data.created_at.strftime('%d-%m-%Y %H:%M') if data.created_at }}
                     </td>
