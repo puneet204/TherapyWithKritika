@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+Add_Note
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Add Note</h2>
+
+    <form method="POST" action="/add_notes/id={{ id }}/{{ email }}">
+        <label>Note</label>
+        <textarea name="note" rows="10" required></textarea>
+        <button type="submit" class="btn btn-primary">Save Note</button>
+    </form>
+</div>
+
+{% endblock %}

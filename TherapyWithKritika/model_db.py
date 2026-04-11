@@ -17,13 +17,21 @@ class Client(db.Model):
     past = db.Column(db.String(150))
     message = db.Column(db.String(150))
     created_at = db.Column(db.DateTime, default=datetime.now())
-    #relation = db.relationship('New_User', backref='author', lazy=True)
+    users = db.relationship('Users', backref='client', lazy=True)
+    notes = db.relationship('Notes', backref='client', lazy=True)
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('client.id'))
     email = db.Column(db.String(50), unique=True)
     firstName = db.Column(db.String(30))
     lastName = db.Column(db.String(30))
     phone = db.Column(db.Integer())
     created_at = db.Column(db.DateTime, default=datetime.now())
 
+class Notes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('client.id'))
+    email = db.Column(db.String(50))#, unique=True)
+    note = db.Column(db.String(500))
+    created_at = db.Column(db.DateTime, default=datetime.now())

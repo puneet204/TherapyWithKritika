@@ -19,6 +19,16 @@ admin
         <input type="password" name="password" class="form-control" id="password" aria-placeholder="Enter Your Password" required/>
     </div>
 
+    <div class="form-group">
+            <label for="table">What brings you here?</label>
+            <select id="table" name="table" required>
+              <option value="" disabled selected>Select db table to view</option>
+              <option>Users</option>
+              <option>Clients</option>
+              <option>Notes</option>
+            </select>
+          </div>
+
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
 

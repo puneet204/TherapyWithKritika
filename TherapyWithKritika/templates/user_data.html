@@ -36,6 +36,7 @@ td:nth-child(12) {
 <div class="hero-actions">
         <a href="/" class="btn-primary">HOME</a>
 </div>
+{% if clients %}
 <div class="container my-4">
     <h3 class="mb-3">Client Details</h3>
     <div class="table-responsive custom-table">
@@ -83,7 +84,7 @@ td:nth-child(12) {
         </table>
     </div>
 </div>
-
+{% elif users %}
 <div class="container my-4">
     <h3 class="mb-3">Users Details</h3>
     <div class="table-responsive custom-table">
@@ -115,4 +116,33 @@ td:nth-child(12) {
         </table>
     </div>
 </div>
+{% elif notes %}
+<div class="container my-4">
+    <h3 class="mb-3">Notes Details</h3>
+    <div class="table-responsive custom-table">
+        <table class="table table-hover align-middle text-center">            
+            <thead>
+                <tr>
+                    <th>EMAIL</th>
+                    <th>NOTES</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for data in notes %}
+                <tr>
+                    <td>{{ data.email }}</td>
+                    <td class="text-break">{{ data.email }}</td>
+                    <td class="text-break">{{ data.note }}</td>
+                    <td>
+                        {{ data.created_at.strftime('%d-%m-%Y %H:%M') if data.created_at }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endif %}
 {% endblock %}

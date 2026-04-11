@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, request, flash, session
-from .model_db import Client, Users
+from flask import Blueprint, render_template, request, flash, session, url_for, redirect
+from .model_db import Client, Users, Notes
 from . import db, mail, Message
 from config import ConfigDetails
 from datetime import datetime
-
+from markupsafe import escape
 
 home_page = Blueprint('home', __name__)
 
@@ -135,14 +135,61 @@ def admin():
     if request.method == "POST":
         username = request.form['uname']
         password = request.form['password']
+        table = request.form['table']
         if username == "mini" and password == "mini_123":
-            clients = Client.query.all()
-            users = Users.query.all()
-        return render_template('user_data.html', clients=clients, users=users)
+            if table == "Clients":
+                val = Client.query.all()
+                return render_template('user_data.html', clients=val)
+            elif table == "Users":
+                val = Users.query.all()
+                return render_template('user_data.html', users=val)
+            elif table == 'Notes':
+                val = Notes.query.all()
+                return render_template('user_data.html', notes=val)
     return render_template('admin.html')
 
 @home_page.route('/consent', methods=['GET', 'POST'])
 def consent():
     return render_template('consent.html')
 
+@home_page.route('/add_note', methods=['GET', 'POST'])
+def add_note():        
+    if request.method == 'POST':
+        user_id = request.form['user'].split('-')[0]
+        email = request.form['user'].split('-')[1]
+        return redirect(url_for('home.add_notes', id=user_id, email=email))
+    val = Client.query.all()
+    return render_template('add_notes.html', content=val)
 
+
+@home_page.route('/add_notes/id=<int:id>/<email>', methods=['GET', 'POST'])
+def add_notes(id,email):
+    if request.method == 'POST':
+        id = id
+        email = email
+        note = request.form['note']
+        data = Notes(
+            email = email.strip(),
+            note = note
+            )
+        db.session.add(data)
+        db.session.commit()
+    return render_template('add_note.html', id=id, email=email)
+
+@home_page.route('/view_note', methods=['GET', 'POST'])
+def view_note():        
+    if request.method == 'POST':
+        user_id = request.form['user'].split('-')[0]
+        email = request.form['user'].split('-')[1]
+        return redirect(url_for('home.view_notes', id=user_id, email=email))
+    val = Client.query.all()
+    return render_template('view_notes.html', content=val)
+
+
+@home_page.route('/view_notes/id=<int:id>/<email>', methods=['GET', 'POST'])
+def view_notes(id,email):
+    content = Notes.query.all()
+    id = id
+    email = email.strip()
+    content = Notes.query.all() #filter_by(email=email).first()
+    return render_template('view_note.html', notes=content, id=id, email=email)

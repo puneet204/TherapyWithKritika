@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+Add_Note
+{% endblock %}
+{% block content %}
+<div class="container my-4">
+    <h3 class="mb-3">Notes Details</h3>
+    <div class="table-responsive custom-table">
+        <table class="table table-hover align-middle text-center">            
+            <thead>
+                <tr>
+                    <!--th>EMAIL</th-->
+                    <th>NOTES</th>
+                    <th>DATE CREATED</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for data in notes %}
+                {% if data.email == email %}
+                    <tr>
+                    <!--td>{{ data.email }}</td-->
+                    <td class="text-break">{{ data.note }}</td>
+                    <td>
+                        {{ data.created_at.strftime('%d-%m-%Y %H:%M') if data.created_at }}
+                    </td>
+                    </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock %}

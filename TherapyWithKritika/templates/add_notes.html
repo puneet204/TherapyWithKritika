@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+Add_Note
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Select User</h2>
+
+    <form method="POST" action="/add_note">
+        <div class="form-group">
+            <label for="user">Select email fot Notes to be added.</label>
+            <select id="user" name="user" required>
+              <option value="" disabled selected>Select email from below</option>
+              {% for data in content %}
+              <option>{{ data.id }} - {{ data.email }} - {{ data.firstName }} {{ data.lastName }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        <button type="submit" class="btn btn-primary">Select User</button>
+    </form>
+</div>
+
+{% endblock %}
