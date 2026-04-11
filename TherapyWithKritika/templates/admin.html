@@ -18,7 +18,7 @@ admin
         <label for="password">Password</label>
         <input type="password" name="password" class="form-control" id="password" aria-placeholder="Enter Your Password" required/>
     </div>
-
+    {% if reqd == 'YES' %}
     <div class="form-group">
             <label for="table">What brings you here?</label>
             <select id="table" name="table" required>
@@ -28,7 +28,7 @@ admin
               <option>Notes</option>
             </select>
           </div>
-
+    {% endif %}
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
 

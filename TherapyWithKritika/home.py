@@ -38,7 +38,7 @@ def fee():
 def send_email(name, last, email, phone, country):
     msg = Message(
         subject="New Client Submission",
-        sender=ConfigDetails.MAIL_USERNAME,
+        sender="therapywithkritikazutshi@gmail.com", #ConfigDetails.MAIL_USERNAME,
         recipients=[email]
     )
 
@@ -146,11 +146,29 @@ def admin():
             elif table == 'Notes':
                 val = Notes.query.all()
                 return render_template('user_data.html', notes=val)
-    return render_template('admin.html')
+    return render_template('admin.html', reqd='YES')
 
 @home_page.route('/consent', methods=['GET', 'POST'])
 def consent():
     return render_template('consent.html')
+
+@home_page.route('/note', methods=['GET', 'POST'])
+def note():
+    if request.method == "POST":
+        username = request.form['uname']
+        password = request.form['password']
+        if username == "mini" and password == "mini_123":
+            return redirect(url_for('home.add_note'))
+    return render_template('admin.html', reqd="NO")
+
+@home_page.route('/view', methods=['GET', 'POST'])
+def view():
+    if request.method == "POST":
+        username = request.form['uname']
+        password = request.form['password']
+        if username == "mini" and password == "mini_123":
+            return redirect(url_for('home.view_note'))
+    return render_template('admin.html', reqd="NO")
 
 @home_page.route('/add_note', methods=['GET', 'POST'])
 def add_note():        
@@ -160,7 +178,6 @@ def add_note():
         return redirect(url_for('home.add_notes', id=user_id, email=email))
     val = Client.query.all()
     return render_template('add_notes.html', content=val)
-
 
 @home_page.route('/add_notes/id=<int:id>/<email>', methods=['GET', 'POST'])
 def add_notes(id,email):
@@ -174,6 +191,7 @@ def add_notes(id,email):
             )
         db.session.add(data)
         db.session.commit()
+        return redirect(url_for('home.add_note'))
     return render_template('add_note.html', id=id, email=email)
 
 @home_page.route('/view_note', methods=['GET', 'POST'])

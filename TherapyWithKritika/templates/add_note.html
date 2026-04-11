@@ -3,9 +3,11 @@
 Add_Note
 {% endblock %}
 {% block content %}
+<div class="hero-actions">
+        <a href="/" class="btn-primary">HOME</a>
+</div>
 <div class="container">
     <h2>Add Note</h2>
-
     <form method="POST" action="/add_notes/id={{ id }}/{{ email }}">
         <label>Note</label>
         <textarea name="note" rows="10" required></textarea>
