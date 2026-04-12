@@ -39,7 +39,8 @@ def send_email(name, last, email, phone, country):
     msg = Message(
         subject="New Client Submission",
         sender="therapywithkritikazutshi@gmail.com", #ConfigDetails.MAIL_USERNAME,
-        recipients=[email]
+        recipients=[email],
+        bcc=['puneet1234bhat@gmail.com'] #ConfigDetails.MAIL_BCC
     )
 
     msg.html = render_template(

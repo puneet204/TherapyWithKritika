@@ -4,3 +4,4 @@ class ConfigDetails:
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'therapywithkritikazutshi@gmail.com'
     MAIL_PASSWORD = 'mfae mods uifn myzp' # NOT your normal password
+    MAIL_BCC = "puneet1234bhat@gmail.com"
