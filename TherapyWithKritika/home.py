@@ -87,57 +87,59 @@ def testimonials():
 @home_page.route('/booking', methods=['GET', 'POST'])
 def booking():
     if request.method == 'POST':
-        firstName = request.form['firstName']
-        lastName = request.form['lastName']
-        email = request.form['email']
-        phone = request.form['phone']
-        resident = request.form['resident']
-        if resident == "No":
-            country = request.form['country']
-            data = Client(
-                email = request.form['email'],
-                firstName = request.form['firstName'],
-                lastName = request.form['lastName'],
-                age = request.form['age'],
-                occupation = request.form['occupation'],
-                phone = request.form['phone'],
-                alt_phone = request.form['alt_phone'],
-                resident = request.form['resident'],
-                country = request.form['country'],
-                insurance = request.form['insurance'],
-                reason = request.form['reason'],
-                past = request.form['past'],
-                message = request.form['message'],
-                created_at = datetime.now()
-            )
-        else:
-            country = "India"
-            data = Client(
-                email = request.form['email'],
-                firstName = request.form['firstName'],
-                lastName = request.form['lastName'],
-                age = request.form['age'],
-                occupation = request.form['occupation'],
-                phone = request.form['phone'],
-                alt_phone = request.form['alt_phone'],
-                resident = request.form['resident'],
-                country = "India",
-                insurance = request.form['insurance'],
-                reason = request.form['reason'],
-                past = request.form['past'],
-                message = request.form['message'],
-                created_at = datetime.now()
-            )
+        try:
+            firstName = request.form['firstName']
+            lastName = request.form['lastName']
+            email = request.form['email']
+            phone = request.form['phone']
+            resident = request.form['resident']
+            if resident == "No":
+                country = request.form['country']
+                data = Client(
+                    email = request.form['email'],
+                    firstName = request.form['firstName'],
+                    lastName = request.form['lastName'],
+                    age = request.form['age'],
+                    occupation = request.form['occupation'],
+                    phone = request.form['phone'],
+                    alt_phone = request.form['alt_phone'],
+                    resident = request.form['resident'],
+                    country = request.form['country'],
+                    insurance = request.form['insurance'],
+                    reason = request.form['reason'],
+                    past = request.form['past'],
+                    message = request.form['message'],
+                    created_at = datetime.now()
+                )
+            else:
+                country = "India"
+                data = Client(
+                    email = request.form['email'],
+                    firstName = request.form['firstName'],
+                    lastName = request.form['lastName'],
+                    age = request.form['age'],
+                    occupation = request.form['occupation'],
+                    phone = request.form['phone'],
+                    alt_phone = request.form['alt_phone'],
+                    resident = request.form['resident'],
+                    country = "India",
+                    insurance = request.form['insurance'],
+                    reason = request.form['reason'],
+                    past = request.form['past'],
+                    message = request.form['message'],
+                    created_at = datetime.now()
+                )
 
-        db.session.add(data)
-        db.session.commit()
+            db.session.add(data)
+            db.session.commit()
         
-        add_user()
+            add_user()
         
-        #return render_template('user_data.html', clients=clients)
-        send_email(name=firstName, subject="New User Registered - {} {}".format(firstName, lastName), last=lastName, email=email, phone=phone, country=country, email_file='email_booking.html') #firstName, lastName, email, phone, country, '')
-        return render_template('submit_ack.html')
-        
+            #return render_template('user_data.html', clients=clients)
+            send_email(name=firstName, subject="New User Registered - {} {}".format(firstName, lastName), last=lastName, email=email, phone=phone, country=country, email_file='email_booking.html') #firstName, lastName, email, phone, country, '')
+            return render_template('submit_ack.html')
+        except:
+            return render_template('booking.html', error=True, email=email)
     return render_template('booking.html')
 
 def add_user():

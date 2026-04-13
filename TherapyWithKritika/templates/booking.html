@@ -8,6 +8,9 @@
         <a href="/" class="btn-primary">HOME</a>
     </div>
       <div class="contact-form">
+        {% if error %}
+        <p style="color: red;"><center>There was error with Registration of {{ email }}. Please do not register with same email id if already regiistered.</center></p>
+        {%endif %}
         <form id="contactForm">
           <h2><center>Registration and Onboarding</center></h2>
           <div class="form-row">
