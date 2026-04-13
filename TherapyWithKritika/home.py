@@ -4,8 +4,18 @@ from . import db, mail, Message
 from config import ConfigDetails
 from datetime import datetime
 from markupsafe import escape
+import os
+from pathlib import Path
+
 
 home_page = Blueprint('home', __name__)
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+file_path = os.path.join(BASE_DIR, "static", "downloads", "Client_Note.txt")
+
+#file_path = Path(home_page.static_folder)
+#print(file_path) #/ "downloads"
+#file_path.parent.mkdir(parents=True, exist_ok=True)
 
 @home_page.route('/', methods=['GET', 'POST'],)
 def home():
@@ -35,22 +45,38 @@ def fee():
  
 #    return render_template("email.html")
 
-def send_email(name, last, email, phone, country):
+def send_email(**kwargs):#name, last, email, phone, country, filename):
+    name = kwargs.get('name')
+    last = kwargs.get('last')
+    email = kwargs.get('email')
+    phone = kwargs.get('phone')
+    country = kwargs.get('country')
+    email_file = kwargs.get('email_file')
+    filename = kwargs.get('filename')
+    subject = kwargs.get('subject')
+
     msg = Message(
-        subject="New Client Submission",
+        subject=subject,
         sender="therapywithkritikazutshi@gmail.com", #ConfigDetails.MAIL_USERNAME,
         recipients=[email],
         bcc=['puneet1234bhat@gmail.com'] #ConfigDetails.MAIL_BCC
     )
 
     msg.html = render_template(
-    "email.html",
+    email_file,
     firstName=name,
     lastName=last,
     email=email,
     phone=phone,
     country=country
 )
+    if filename:
+        with home_page.open_resource(filename) as f:
+            msg.attach(
+                filename=filename,
+                content_type="application/csv",
+                data=f.read()
+                )
     mail.send(msg)
     return "Email sent successfully!"
 
@@ -109,7 +135,7 @@ def booking():
         add_user()
         
         #return render_template('user_data.html', clients=clients)
-        send_email(firstName, lastName, email, phone, country)
+        send_email(name=firstName, subject="New User Registered - {} {}".format(firstName, lastName), last=lastName, email=email, phone=phone, country=country, email_file='email_booking.html') #firstName, lastName, email, phone, country, '')
         return render_template('submit_ack.html')
         
     return render_template('booking.html')
@@ -212,3 +238,25 @@ def view_notes(id,email):
     email = email.strip()
     content = Notes.query.all() #filter_by(email=email).first()
     return render_template('view_note.html', notes=content, id=id, email=email)
+
+@home_page.route('/download', methods=['GET', 'POST'])
+def download():
+    content = Client.query.all()
+    if request.method == 'POST':
+        notes = Notes.query.all()
+        data = request.form['download']
+        email = data.split("-")[1].strip()
+        name = data.split("-")[2].strip()
+
+        if os.path.exists(file_path):
+            os.remove(file_path)
+        line = 1
+        for note in notes:
+            if note.email.strip() == email:
+                with open(file_path, "a") as f:
+                    f.write('{}. {}\n'.format(line, note.note))
+                    line += 1
+        send_email(email_file='email_download.html', subject='File request - {}'.format(name), email='puneet1234bhat@gmail.com', filename=file_path)
+        return render_template('success.html')
+    return render_template('download.html', content=content)
+
