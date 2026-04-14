@@ -136,7 +136,7 @@ def booking():
             add_user()
         
             #return render_template('user_data.html', clients=clients)
-            #send_email(name=firstName, subject="New User Registered - {} {}".format(firstName, lastName), last=lastName, email=email, phone=phone, country=country, email_file='email_booking.html') #firstName, lastName, email, phone, country, '')
+            send_email(name=firstName, subject="New User Registered - {} {}".format(firstName, lastName), last=lastName, email=email, phone=phone, country=country, email_file='email_booking.html') #firstName, lastName, email, phone, country, '')
             return render_template('submit_ack.html')
         except:
             return render_template('booking.html', error=True, email=email)
