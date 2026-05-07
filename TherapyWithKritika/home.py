@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, session, url_for, redirect
 from .model_db import Client, Users, Notes
-from . import db, mail, Message
+from . import db, mail
+from flask_mail import Message
 from config import ConfigDetails
 from datetime import datetime
 from markupsafe import escape
