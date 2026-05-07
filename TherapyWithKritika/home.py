@@ -138,7 +138,7 @@ def booking():
         
             #return render_template('user_data.html', clients=clients)
             try:
-                send_email(name=firstName, subject="New User Registered - {} {}".format(firstName, lastName), last=lastName, email=email, phone=phone, country=country, email_file='email_booking.html') #firstName, lastName, email, phone, country, '')
+                #send_email(name=firstName, subject="New User Registered - {} {}".format(firstName, lastName), last=lastName, email=email, phone=phone, country=country, email_file='email_booking.html') #firstName, lastName, email, phone, country, '')
                 return render_template('submit_ack.html')
             except Exception as e:
                 return render_template('submit_ack.html')
@@ -263,7 +263,7 @@ def download():
                     f.write('{}. {}\n'.format(line, note.note))
                     line += 1
         try:
-            send_email(email_file='email_download.html', subject='File request - {}'.format(name), email='puneet1234bhat@gmail.com', filename=file_path)
+            #send_email(email_file='email_download.html', subject='File request - {}'.format(name), email='puneet1234bhat@gmail.com', filename=file_path)
             return render_template('success.html')
         except Exception as e:
             return render_template('download.html', content="NA")
