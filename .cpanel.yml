@@ -2,6 +2,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/g1qpy8ym7ki5/therapywithkritika
     - /bin/cp main.py $DEPLOYPATH
+    - /bin/cp TherapyWithKritika/home.py $DEPLOYPATH/TherapyWithKritika
     - /bin/cp passenger_wsgi.py $DEPLOYPATH
     - /bin/cp requirements.txt $DEPLOYPATH
     - /bin/cp -R templates $DEPLOYPATH
