@@ -262,7 +262,10 @@ def download():
                 with open(file_path, "a") as f:
                     f.write('{}. {}\n'.format(line, note.note))
                     line += 1
-        send_email(email_file='email_download.html', subject='File request - {}'.format(name), email='puneet1234bhat@gmail.com', filename=file_path)
-        return render_template('success.html')
+        try:
+            send_email(email_file='email_download.html', subject='File request - {}'.format(name), email='puneet1234bhat@gmail.com', filename=file_path)
+            return render_template('success.html')
+        except Exception as e:
+            return render_template('download.html', content="NA")
     return render_template('download.html', content=content)
 
